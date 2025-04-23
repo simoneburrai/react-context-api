@@ -1,6 +1,5 @@
 import { usePosts } from "../contexts/PostContext";
 
-
 const PostList = () => {
     const posts = usePosts();
 

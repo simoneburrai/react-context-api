@@ -1,0 +1,9 @@
+div.error-alert {
+    width: 200px;
+    height: 200px;
+    background-color: coral;
+    padding: 30px;
+    position: absolute;
+    top: 0;
+    left: 40%;
+}
