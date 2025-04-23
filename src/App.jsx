@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import DefaultLayout from "./layouts/DefaultLayout";
 import Home from "./pages/Home";
 import PostPage from "./pages/PostPage";
@@ -6,16 +6,22 @@ import { PostProvider } from "./contexts/PostContext";
 
 function App() {
 
+  const PostProviderLayout = () => {
+    return <PostProvider>
+      <Outlet />
+    </PostProvider>
+  }
+
   return (
     <BrowserRouter>
-      <PostProvider>
-        <Routes>
-          <Route element={<DefaultLayout />}>
-            <Route path="/" element={<Home />} />
+      <Routes>
+        <Route element={<DefaultLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route element={<PostProviderLayout />}>
             <Route path="/posts" element={<PostPage />} />
           </Route>
-        </Routes>
-      </PostProvider>
+        </Route>
+      </Routes>
     </BrowserRouter>
   )
 }
